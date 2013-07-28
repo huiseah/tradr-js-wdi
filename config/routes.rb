@@ -7,6 +7,7 @@ Tradr::Application.routes.draw do
   	end
   end
 
+  get 'stocks/search' => 'stocks#search'
 
   get '/login' => 'session#new'
   post 'login' => 'session#create'

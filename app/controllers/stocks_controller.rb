@@ -15,9 +15,15 @@ class StocksController < ApplicationController
 		@stocks = @auth.stocks.order(:symbol).order(:shares)
 		@symbols = @auth.stocks.map(&:symbol).uniq.sort
 		@symbol = stock.symbol
-		stock.quote = stock.get_quote(@symbol)
+		stock.purchase_price = stock.get_quote(@symbol)
 		stock.name = stock.get_name(@symbol)
 		@auth.stocks << stock
+	end
+
+	def search
+		stock = Stock.new
+		@quote = stock.get_quote(params[:symbol])
+		@name = stock.get_name(params[:symbol])
 	end
 
 	def chart

@@ -15,8 +15,8 @@ $(document).ready( function () {
 			element: 'chart',
 			data: symbols,
 			xkey: 'quote',
-			ykeys: ['shares'],
-			labels: ['Shares']
+			ykeys: ['purchase_price'],
+			labels: ['Purchase_price']
 		});
 		console.log(process_symbol);
 	};
