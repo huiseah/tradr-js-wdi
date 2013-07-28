@@ -1,0 +1,18 @@
+%div#new_stock
+
+%div#chart
+
+%div.row
+  %div.large-4.columns
+    %div.float
+      = link_to('New', new_stock_path, :remote => true, :class => 'button radius tiny alert')
+    %div.float
+      = button_tag('Chart', :class => 'button radius tiny', :id => 'show_chart')
+    %div.float
+      = select_tag 'symbols', options_for_select(@symbols.map { |a| [a, a]} )
+    %div.clear
+  %div.large-8.columns
+
+%ol#stocks
+  = render(:partial => 'stocks')
+

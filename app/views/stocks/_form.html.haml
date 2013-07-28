@@ -1,0 +1,9 @@
+%div.row
+  %div.large-3.columns
+    = form_for @stock, :remote => true do |f|
+      = f.label :symbol
+      = f.text_field :symbol, :autofocus => true
+      = f.label :shares
+      = f.number_field :shares, :placeholder => 'No. of shares'
+      = f.submit nil, :class => 'button radius tiny'
+  .large-9.columns
