@@ -13,12 +13,12 @@ $(document).ready( function () {
 		$('#chart').empty();
 		new Morris.Line({
 			element: 'chart',
-			data: symbols,
+			data: stocks,
 			xkey: 'quote',
 			ykeys: ['purchase_price'],
 			labels: ['Purchase_price']
 		});
-		console.log(process_symbol);
+
 	};
 
 	$('#show_chart').click(show_chart).trigger('click');
