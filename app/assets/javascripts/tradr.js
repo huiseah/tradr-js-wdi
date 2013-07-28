@@ -5,7 +5,7 @@ $(document).ready( function () {
 		$.ajax({
 			dataType: 'json',
 			type: 'GET',
-			url: 'stocks/chart/' + symbol
+			url: '/stocks/chart/' + symbol
 		}).done(process_symbol);
 	};
 
@@ -14,10 +14,11 @@ $(document).ready( function () {
 		new Morris.Line({
 			element: 'chart',
 			data: symbols,
-			xkey: 'purchase_price',
-			ykeys: ['shares']
+			xkey: 'quote',
+			ykeys: ['shares'],
 			labels: ['Shares']
 		});
+		console.log(process_symbol);
 	};
 
 	$('#show_chart').click(show_chart).trigger('click');

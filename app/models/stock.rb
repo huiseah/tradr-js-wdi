@@ -14,18 +14,27 @@
 #
 
 class Stock < ActiveRecord::Base
-	attr_accessible :symbol, :shares, :purchase_price
+	attr_accessible :symbol, :shares, :purchase_price, :quote, :name
 	belongs_to :user, :inverse_of => :stocks
 
-	def stock
-  	@symbol = params[:symbol]
-  		if @symbol.nil? or @symbol.empty?
-    	@quote = ''
+	def get_quote (symbol)
+  		if symbol.nil? or symbol.empty?
+    	quote = ''
   		else
-    	@symbol = @symbol.upcase
-    	@quote = YahooFinance::get_quotes(YahooFinance::StandardQuote, @symbol)[@symbol].lastTrade
-  		@name = YahooFinance::get_quotes(YahooFinance::StandardQuote, @symbol)[@symbol].name
-  		end
-	end
+    	symbol = symbol.upcase
+    	quote = YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].lastTrade
+  		name = YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].name
+  		return quote
+  	end
+  end
 
+  def get_name (symbol)
+  		if symbol.nil? or symbol.empty?
+    	name = ''
+  		else
+    	symbol = symbol.upcase
+  		name = YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].name
+  		return name
+  	end
+  end
 end
