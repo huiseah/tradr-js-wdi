@@ -3,18 +3,28 @@
 }
 
 .tip {
-	background-color: #ce454c;
+	background-color: #f35e30;
 	border-radius: 7px;
-	color: #fae9ce;
+	color: #f9f4e5;
 	text-align: center;
 }
 
 .raider {
 	border-radius: 7px;
-	color: #fae9ce;
+	color: #25527f;
 	text-align: left;
 }
 
+body {
+	background-image: url('glass2.jpg');
+	background-position: center;
+	color: white;
+}
+
+/*.navbutton {
+	@include button($bg: #0fa3a0);
+}
+*/
 /*.row {
 	min-width: 80%;
 }*/
