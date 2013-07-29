@@ -5,7 +5,7 @@ u1 = User.create(:email => 'bob@gmail.com', :balance => 100_000, :password => 'a
 u2 = User.create(:email => 'sue@gmail.com', :balance => 115_300, :password => 'a', :password_confirmation => 'a')
 
 s1 = Stock.create(:symbol => 'aapl', :shares => 10)
-s2 = Stock.create(:symbol => 'goog', :shares => 25)
+s2 = Stock.create(:symbol => 'goog', :shares => 25, :purchase_price => 700.00)
 s3 = Stock.create(:symbol => 'amzn', :shares => 15)
 s4 = Stock.create(:symbol => 'msft', :shares => 75)
 s5 = Stock.create(:symbol => 'ge', :shares => 35)

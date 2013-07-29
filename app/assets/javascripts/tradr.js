@@ -1,7 +1,7 @@
 $(document).ready( function () {
 	var show_chart = function () {
 		var symbol = $('#symbols').val();
-
+		symbol = symbol.replace('.','-');
 		$.ajax({
 			dataType: 'json',
 			type: 'GET',

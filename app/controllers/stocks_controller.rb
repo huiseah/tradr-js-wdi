@@ -27,7 +27,7 @@ class StocksController < ApplicationController
 	end
 
 	def chart
-		render :json => @auth.stocks.where(:symbol => params[:symbol])
+		render :json => @auth.stocks.where(:symbol => params[:symbol].gsub('-','.'))
 	end
 
 	private
