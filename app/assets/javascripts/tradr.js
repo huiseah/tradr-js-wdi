@@ -1,18 +1,21 @@
 $(document).ready( function () {
-	var show_chart = function () {
-		var symbol = $('#symbols').val();
-		symbol = symbol.replace('.','-');
-		$.ajax({
-			dataType: 'json',
-			type: 'GET',
-			url: '/stocks/chart/' + symbol
-		}).done(process_symbol);
+	var show_chart = function (charts) {
+		debugger;
+		$('#chart').empty();
+
+		$.each(charts, function (i, symbol) {
+			$.ajax({
+				dataType: 'json',
+				type: 'GET',
+				url: '/stocks/chart/' + symbol
+			}).done(process_symbol);
+		});
 	};
 
 	var process_symbol = function (stocks) {
-		$('#chart').empty();
+		var nchart = $('<div>').appendTo('#chart');
 		new Morris.Line({
-			element: 'chart',
+			element: nchart,
 			data: stocks,
 			xkey: 'quote',
 			ykeys: ['purchase_price'],
@@ -21,5 +24,15 @@ $(document).ready( function () {
 
 	};
 
-	$('#show_chart').click(show_chart).trigger('click');
+	$('#cell').on('change', ':checkbox', function() {
+			var $parent = $(this).parent();
+			var $checked = $parent.find(':checked');
+
+			var chart = [];
+			charts = $checked.map( function () {
+				return $(this).attr('name');
+			}).get();
+
+			show_chart(charts);
+		})
 });

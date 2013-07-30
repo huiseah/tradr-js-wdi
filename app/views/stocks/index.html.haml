@@ -4,12 +4,14 @@
 
 %div.row
   %div.large-4.columns
-    %div.float
-      = link_to('Buy', new_stock_path, :remote => true, :class => 'button radius tiny alert')
-    %div.float
-      = button_tag('Chart', :class => 'button radius tiny', :id => 'show_chart')
-    %div.float
-      = select_tag 'symbols', options_for_select(@symbols.map { |a| [a, a]} )
+    %div#cell
+      %div.float
+        = link_to('Buy', new_stock_path, :remote => true, :class => 'button radius tiny alert')
+      %div.float
+        - @symbols.each do |t|
+          = t.upcase
+          = check_box_tag(t,  t, :class => 'show_chart')
+
     %div.clear
   %div.large-8.columns
 

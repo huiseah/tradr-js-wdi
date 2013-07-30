@@ -15,12 +15,13 @@
 
 class Stock < ActiveRecord::Base
 	attr_accessible :symbol, :shares, :purchase_price, :quote, :name
+  validates :symbol, :presence => true 
 	belongs_to :user, :inverse_of => :stocks
 
   
   def quote
     self.symbol = self.symbol.upcase
-    YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].lastTrade
+    quote = YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].lastTrade
   end
 
 

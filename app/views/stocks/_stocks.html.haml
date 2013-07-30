@@ -1,6 +1,6 @@
 - @stocks.each do |stock|
   %ul
-    %li= stock.symbol
+    %li= stock.symbol.upcase
     %li= stock.shares
     %li= stock.purchase_price
     %li= stock.quote
