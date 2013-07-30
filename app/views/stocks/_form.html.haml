@@ -1,15 +1,17 @@
 %div.row
-  %div.large-4.columns
-    = form_tag '/stocks/search', :method => 'get', :remote => true do 
-      = label_tag :symbol
-      = text_field_tag :symbol, nil, :autofocus => true
-      = submit_tag 'Get quote', :class => 'button radius tiny'
-    %div#quote
-  %div.large-4.columns
-    = form_for @stock, :remote => true do |f|
-      = f.label :symbol
-      = f.text_field :symbol
-      = f.label :shares
-      = f.number_field :shares, :placeholder => 'No. of shares'
-      = f.submit 'Buy stock', :class => 'button radius tiny' 
-  .large-8.columns
+  %div.transbox
+    %article.tty
+      %div.large-4.columns
+        = form_tag '/stocks/search', :method => 'get', :remote => true do 
+          = label_tag :symbol
+          = text_field_tag :symbol, nil, :autofocus => true
+          = submit_tag 'Get quote', :class => 'button radius tiny'
+        %div#quote
+      %div.large-4.columns
+        = form_for @stock, :remote => true do |f|
+          = f.label :symbol
+          = f.text_field :symbol
+          = f.label :shares
+          = f.number_field :shares, :placeholder => 'No. of shares'
+          = f.submit 'Buy stock', :class => 'button radius tiny' 
+      .large-8.columns

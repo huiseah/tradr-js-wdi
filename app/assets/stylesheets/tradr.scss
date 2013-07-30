@@ -1,5 +1,5 @@
 #chart {
-	width: 500px;
+	width: 600px;
 }
 
 .tip {
@@ -24,8 +24,17 @@ body {
 	color: #235377;
 }
 
+.transbox {
+	width: 700px;
+	height: 300px;
+	background-color: #ffffff;
+	opacity: 0.75;
+	border-radius: 4px;
+}
 
-
+.tty {
+	color: #000000;
+}
 /*.navbutton {
 	@include button($bg: #0fa3a0);
 }

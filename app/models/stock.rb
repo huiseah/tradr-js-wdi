@@ -21,7 +21,7 @@ class Stock < ActiveRecord::Base
   
   def quote
     self.symbol = self.symbol.upcase
-    quote = YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].lastTrade
+    YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].lastTrade
   end
 
 
@@ -44,5 +44,13 @@ class Stock < ActiveRecord::Base
   		name = YahooFinance::get_quotes(YahooFinance::StandardQuote, symbol)[symbol].name
   		return name
   	end
+  end
+
+  def historic_quote
+    self.symbol = self.symbol.upcase
+    his_quote = YahooFinance::get_historical_quotes_days( symbol, 30 ) #do |row|
+    
+    #   puts "YHOO,#{row.join(',')}"
+    #end
   end
 end
