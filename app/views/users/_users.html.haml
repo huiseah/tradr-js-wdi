@@ -1,2 +1,4 @@
 - @users.each do |user|
-	%li= user.email
+	%li= "#{user.email} #{number_to_currency(user.balance)}"
+	
+	

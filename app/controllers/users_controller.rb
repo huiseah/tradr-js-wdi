@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
 	def index
 		redirect_to(root_path)
+		@balance = number_to_currency(params[:balance])
 	end
 
 	def create

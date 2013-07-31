@@ -16,6 +16,11 @@ class StocksController < ApplicationController
 		@symbols = @auth.stocks.map(&:symbol).uniq.sort
 		@symbol = stock.symbol
 		stock.purchase_price = stock.get_quote(@symbol)
+
+		cost = params[:stock][:shares].to_i * stock.purchase_price 
+		@auth.balance = @auth.balance - cost
+		@auth.save
+
 		stock.name = stock.get_name(@symbol)
 		@auth.stocks << stock
 	end

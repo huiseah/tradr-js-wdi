@@ -1,2 +1,3 @@
 $('form')[0].reset();
 $('#stocks').html('<%=j render(:partial => 'stocks') %>');
+$('#currencybar').html('<%= number_to_currency(@auth.balance) %>')
